@@ -53,6 +53,29 @@ def average_battery(fleet):
         total = total + bike["battery"]
     return total / len(fleet)
 
+def average_battery_of_available(fleet):
+    total = 0
+    available_bike_count = 0
+    for bike in fleet:
+        if bike["available"] and bike["battery"] > LOW_BATTERY:
+            total += bike["battery"]
+            available_bike_count += 1
+    return total/available_bike_count
+
+# def average_battery_of_available(fleet):
+    
+    
+#     for bike in fleet:
+#         if fleet(bike[3]):
+#             average_battery(fleet)
+            
+#     return 
+
+# bikes_in_shoreditch = []
+
+# for bike in fleet:
+#     if bike["station"] == "Shoreditch":
+#         bikes_in_shoreditch.append(bike["id"])
 
 print(f"{len(fleet)} bikes in the fleet")
 print(f"Fields on each bike: {list(fleet[0].keys())}")
@@ -61,3 +84,6 @@ print(f"Ready to hire: {ready_to_hire(fleet)}")
 print(f"Needs charging: {needs_charging(fleet)}")
 print(f"At Kings Cross: {bikes_at(fleet, 'Kings Cross')}")
 print(f"Average battery: {average_battery(fleet):.1f}%")
+# print(bikes_in_shoreditch)
+print(f"Average battery of available bikes: {average_battery_of_available(fleet):.1f}")
+print(f"Bikes at Shoreditch:{bikes_at(fleet, "Shoreditch")}")

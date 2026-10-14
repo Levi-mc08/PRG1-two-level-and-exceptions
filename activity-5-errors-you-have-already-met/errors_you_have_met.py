@@ -11,7 +11,7 @@ fleet = [{"id": "B-104"}, {"id": "B-107"}]
 
 
 def missing_key():
-    print(grades["Aisha"])
+    print(grades.get("Aisha", "Not Found"))
 
 
 def past_the_end():
@@ -19,11 +19,11 @@ def past_the_end():
 
 
 def text_that_is_not_a_number():
-    print(int("forty"))
+    print(str("forty"))
 
 
 def adding_apples_to_oranges():
-    print("82" + 141)
+    print(82 + 141)
 
 
 def file_that_is_not_there():
@@ -31,8 +31,8 @@ def file_that_is_not_there():
         print(f.read())
 
 
-missing_key()
+# missing_key()
 # past_the_end()
 # text_that_is_not_a_number()
-# adding_apples_to_oranges()
+adding_apples_to_oranges()
 # file_that_is_not_there()

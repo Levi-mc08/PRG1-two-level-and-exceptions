@@ -11,7 +11,7 @@ Row 0 is the front row.
 seats = [
     ["X", "X", ".", ".", ".", ".", "X", "X"],
     ["X", "X", "X", ".", ".", "X", "X", "X"],
-    [".", ".", ".", ".", ".", ".", ".", "."],
+    [".", ".", ".", ".", "X", ".", ".", "."],
     ["X", "X", "X", "X", "X", "X", "X", "X"],
     [".", ".", "X", "X", "X", "X", ".", "."],
 ]
@@ -47,6 +47,23 @@ for row_number in range(ROWS):
     total_free = total_free + free
     print(f"Row {row_number}: {free} free")
 
+freest_row_number = 0
+freest_row = " "
+
+for row_number in range(ROWS):
+    free_seats = free_in_row(seats[row_number])
+    if free_seats > freest_row_number:
+        freest_row_number = free_seats
+        freest_row = row_number
+
+first_two_seats_free = 0
+
+for row_number in range(2):
+    free_seats = free_in_row(seats[row_number])
+    first_two_seats_free += free_seats
+
 print("---")
 print(f"{total_seats - total_free} of {total_seats} seats sold")
 print(f"{total_free} still available")
+print(f"Freest row: {freest_row} with {freest_row_number} free seats")
+print(f"There are {first_two_seats_free} seats free in the first two rows")
